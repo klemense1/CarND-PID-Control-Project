@@ -6,16 +6,20 @@ public:
   /*
   * Errors
   */
-  double p_error;
-  double i_error;
-  double d_error;
+  double _p_error;
+  double _i_error;
+  double _d_error;
+  double _prev_cte;
 
   /*
   * Coefficients
   */ 
-  double Kp;
-  double Ki;
-  double Kd;
+  double _Kp;
+  double _Ki;
+  double _Kd;
+  
+  double _steer;
+  double _control_error;
 
   /*
   * Constructor
@@ -37,10 +41,13 @@ public:
   */
   void UpdateError(double cte);
 
+  double ControlSteering();
+  
   /*
   * Calculate the total PID error.
   */
-  double TotalError();
+  double TotalError(double actual_steering);
+  
 };
 
 #endif /* PID_H */
