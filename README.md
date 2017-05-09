@@ -28,7 +28,7 @@
 
 [//]: # (Image References)
 
-## Describe the effect each of the P, I, D components had in your implementation.
+## The PID Controller - Effect and parameter setting
 
 #### P
 The proportional component directly controls the deviation from the center of the lane. It contributes to the steering in proportion to the Cross Track Error (CTE).
