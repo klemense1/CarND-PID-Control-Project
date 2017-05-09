@@ -30,19 +30,21 @@
 
 ## Describe the effect each of the P, I, D components had in your implementation.
 
-The Proportional component directly controls the deviation from the central. It steers in proportion to the Cross Track Error.
+#### P
+The proportional component directly controls the deviation from the center of the lane. It contributes to the steering in proportion to the Cross Track Error (CTE).
 
-The differential term prevents the controller to oscilate around the wanted value.
+#### D
+The differential component prevents the controller to oscilate around the wanted value. It contributes to the steering in proportion to the derivative of the CTE.
 
-The Integral component can deal with systematic biases like a broken vehicle that is forced to go left all the time or a wind blowing consistently in one direction. Using the I component, we adjust to the bias. As the car in the simulator has no bias, I have set the Integral component to zero, which resulted in the best results I could achieve.
+#### I
+The integral component can deal with systematic biases like a broken vehicle that is forced to go left all the time or a wind blowing consistently in one direction. It contributes to the steering in proportion to the accumulated of the CTE. As the car in the simulator has no bias, I have set the Integral component to zero, which resulted in the best results I could achieve.
 
 [video1]: ./simulator-recording.mov "Video Output"
 
-[link to my video result][video1]
+A sample video of the PID-controlled vehicle can be seen here: [link to my video sample][video1]
 
 As the integral term could be set to zero (as described above), I only had two parameters left to choose, which is why I decided for manual tuning.
 
 I had first set both the differential and integral component to zero to only have a P-Control. This way I was able to come up with a gain that was good enough to keep the controller on the road for the beginning. Unfortunately, the car was oscillating and the oscilation was building up. Next, I started to change the gain of the differential component to come up with the following parameter setting:
 
-kP = 0.05
-kD = 5
+kP = 0.05 and kD = 5
